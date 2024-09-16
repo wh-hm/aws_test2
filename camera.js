@@ -25,24 +25,3 @@ const cameraInitSmartphoneSupport = () => {
             console.log(err.toString());
         });
 }
-
-const shoot = () => {
-    //video要素
-    const video = document.getElementById("camera");
-    //canvas要素
-    const canvas = document.getElementById("canvas");
-    //canvas要素の大きさを変更
-    canvas.width = cameraWidth;
-    canvas.height = cameraHeight;
-    //描画用オブジェクトを取得
-    const ctx = canvas.getContext("2d");
-
-    //描画する
-    ctx.drawImage(
-        video,          // データソース 
-        0,              // 描画開始x座標  
-        0,              // 描画開始y座標
-        cameraWidth,    // 描画横サイズ
-        cameraHeight    // 描画縦サイズ
-    );
-}
