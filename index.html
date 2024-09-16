@@ -8,5 +8,36 @@
 <body>
   <h1>みえるか</h1>
   <figure><img src="" alt=""></figure>
+  <div>
+    <input type="button" value="カメラ起動" onclick="cameraInitSmartphoneSupport()">
+  </div>
+  <div>
+    <video id="camera" autoplay muted playsinline></video>
+  </div>
 </body>
+<script>
+  const cameraWidth = 300;
+const cameraHeight = 400;
+
+const cameraInit = () => {
+    const video = document.getElementById("camera");
+
+    const cameraSetting = {
+        audio: false,
+        video: {
+            width: cameraWidth,
+            height: cameraHeight,
+            facingMode: "environment",
+        }
+    }
+
+    navigator.mediaDevices.getUserMedia(cameraSetting)
+        .then((mediaStream) => {
+            video.srcObject = mediaStream;
+        })
+        .catch((err) => {
+            console.log(err.toString());
+        });
+}
+</script>
 </html>
